@@ -1,0 +1,80 @@
+export const APP_ROUTES = {
+  HOME: {
+    ROUTE: '/',
+    KEY: 'home',
+    TITLE: 'Home',
+    ICON: 'home',
+  },
+  LOGIN: {
+    ROUTE: '/login',
+    KEY: 'login',
+    TITLE: 'Login',
+    ICON: 'login',
+  },
+  PRODUCT: {
+    ROUTE: '/product',
+    KEY: 'product',
+    TITLE: 'Product',
+    ICON: 'product',
+  },
+  PRODUCT_DETAIL: {
+    ROUTE: '/product/:id',
+    KEY: 'product-detail',
+    TITLE: 'Product Detail',
+    ICON: 'product-detail',
+  },
+  PROJECT: {
+    ROUTE: '/project',
+    KEY: 'project',
+    TITLE: 'Project',
+    ICON: 'project',
+  },
+  PROJECT_DETAIL: {
+    ROUTE: '/project/:id',
+    KEY: 'project-detail',
+    TITLE: 'Project Detail',
+    ICON: 'project-detail',
+  },
+  POST: {
+    ROUTE: '/post',
+    KEY: 'post',
+    TITLE: 'Post',
+    ICON: 'post',
+  },
+  POST_DETAIL: {
+    ROUTE: '/post/:id',
+    KEY: 'post-detail',
+    TITLE: 'Post Detail',
+    ICON: 'post-detail',
+  },
+  RECIPE: {
+    ROUTE: '/recipe',
+    KEY: 'recipe',
+    TITLE: 'Recipe',
+    ICON: 'recipe',
+  },
+  RECIPE_DETAIL: {
+    ROUTE: '/recipe/:id',
+    KEY: 'recipe-detail',
+    TITLE: 'Recipe Detail',
+    ICON: 'recipe-detail',
+  },
+  TODO: {
+    ROUTE: '/todo',
+    KEY: 'todo',
+    TITLE: 'Todo',
+    ICON: 'todo',
+  },
+  TODO_DETAIL: {
+    ROUTE: '/todo/:id',
+    KEY: 'todo-detail',
+    TITLE: 'Todo Detail',
+    ICON: 'todo-detail',
+  },
+  PROFILE: {
+    ROUTE: '/profile',
+    KEY: 'profile',
+    TITLE: 'Profile',
+    ICON: 'profile',
+  },
+}

@@ -1,0 +1,50 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  background: #001529;
+  color: white;
+
+  .logo {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .main-menu {
+    flex: 1;
+    margin-left: 20px;
+  }
+
+  .user-menu {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    .user-image {
+      height: 45px;
+      vertical-align: middle;
+    }
+  }
+}
+
+.content {
+  padding: 20px;
+  background: #f0f2f5;
+  min-height: calc(100vh - 64px - 38.4px); /* Adjust for header and footer height */
+}
+
+.footer {
+  text-align: center;
+  background: #001529;
+  color: white;
+  padding: 10px 0;
+}
