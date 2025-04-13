@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Spin } from 'antd';
 import { checkAuth } from '../apis/authApi';
-import { getAuthUser } from '../apis/userApi';
+import { getAuthUserApi } from '../apis/userApi';
 import { APP_ROUTES } from '../constants/constant';
 import App from '../App';
 import Login from '../pages/Login';
@@ -21,7 +21,7 @@ const Root = () => {
     const verifyAuth = async () => {
       try {
         await checkAuth(); // Call the checkAuth function from authApi
-        const response = await getAuthUser(); // Call the getAuthUser function to fetch user data
+        const response = await getAuthUserApi(); // Updated to use getAuthUserApi
         setUser(response.data); // Set the user data in the store
         setAuth(true); // Set the authenticated user in the store
       } catch {

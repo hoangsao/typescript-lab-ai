@@ -25,7 +25,7 @@ const handleResponse = async <T> (response: Response): Promise<ApiResponse<T>> =
   };
 };
 
-export const getUsers = async (
+export const getUsersApi = async (
   currentPage: number,
   pageSize: number
 ): Promise<ApiResponse<PaginatedResponse<User>>> => {
@@ -40,7 +40,7 @@ export const getUsers = async (
   return handleResponse<PaginatedResponse<User>>(response);
 };
 
-export const getUserById = async (id: number): Promise<ApiResponse<User>> => {
+export const getUserByIdApi = async (id: number): Promise<ApiResponse<User>> => {
   const response = await fetch(`${serverUrl}/users/${id}`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
@@ -49,7 +49,7 @@ export const getUserById = async (id: number): Promise<ApiResponse<User>> => {
   return handleResponse<User>(response);
 };
 
-export const createUser = async (user: User): Promise<ApiResponse<User>> => {
+export const createUserApi = async (user: User): Promise<ApiResponse<User>> => {
   const response = await fetch(`${serverUrl}/users`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -59,7 +59,7 @@ export const createUser = async (user: User): Promise<ApiResponse<User>> => {
   return handleResponse<User>(response);
 };
 
-export const updateUser = async (id: number, user: User): Promise<ApiResponse<User>> => {
+export const updateUserApi = async (id: number, user: User): Promise<ApiResponse<User>> => {
   const response = await fetch(`${serverUrl}/users/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
@@ -69,7 +69,7 @@ export const updateUser = async (id: number, user: User): Promise<ApiResponse<Us
   return handleResponse<User>(response);
 };
 
-export const deleteUser = async (id: number): Promise<ApiResponse<null>> => {
+export const deleteUserApi = async (id: number): Promise<ApiResponse<null>> => {
   const response = await fetch(`${serverUrl}/users/${id}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
@@ -78,7 +78,7 @@ export const deleteUser = async (id: number): Promise<ApiResponse<null>> => {
   return handleResponse<null>(response);
 };
 
-export const getAuthUser = async (): Promise<ApiResponse<User>> => {
+export const getAuthUserApi = async (): Promise<ApiResponse<User>> => {
   const response = await fetch(`${serverUrl}/auth/me`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
@@ -90,7 +90,7 @@ export const getAuthUser = async (): Promise<ApiResponse<User>> => {
   return handleResponse<User>(response);
 };
 
-export const updateProfile = async (id: number, profileData: Partial<User>): Promise<ApiResponse<User>> => {
+export const updateProfileApi = async (id: number, profileData: Partial<User>): Promise<ApiResponse<User>> => {
   const response = await fetch(`${serverUrl}/users/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },

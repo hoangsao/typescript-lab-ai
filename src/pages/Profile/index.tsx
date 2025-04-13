@@ -17,7 +17,7 @@ import {
 } from 'antd';
 import { UserOutlined, EditOutlined, SaveOutlined, CloseOutlined } from '@ant-design/icons';
 import useUserStore from '../../store/userStore';
-import { updateProfile } from '../../apis/userApi';
+import { updateProfileApi } from '../../apis/userApi';
 import { User, Address, Company } from '../../models/user';
 import dayjs from 'dayjs';
 
@@ -25,7 +25,7 @@ const { Title, Text } = Typography;
 const { Option } = Select;
 
 const Profile: React.FC = () => {
-  const { user, updateUser } = useUserStore();
+  const { user, updateUserState } = useUserStore();
   const [form] = Form.useForm();
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -129,10 +129,10 @@ const Profile: React.FC = () => {
         company
       };
       
-      const response = await updateProfile(user.id, updateData);
+      const response = await updateProfileApi(user.id, updateData);
       
       if (response.success && response.data) {
-        updateUser(response.data);
+        updateUserState(response.data);
         messageApi.success('Profile updated successfully');
         setIsEditing(false);
       } else {

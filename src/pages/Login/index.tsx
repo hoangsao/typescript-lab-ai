@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { login } from '../../apis/authApi';
 import useAuthStore from '../../store/authStore';
 import { APP_ROUTES } from '../../constants/constant';
-import { getAuthUser } from '../../apis/userApi';
+import { getAuthUserApi } from '../../apis/userApi';
 import useUserStore from '../../store/userStore';
 
 const Login = () => {
@@ -21,7 +21,7 @@ const Login = () => {
         values.username,
         values.password
       );
-      const response = await getAuthUser(); // Call the getAuthUser function to fetch user data
+      const response = await getAuthUserApi(); // Updated to use getAuthUserApi
       setUser(response.data); // Set the user data in the store
       setAuth(true);
       messageApi.success('Login successful!');
