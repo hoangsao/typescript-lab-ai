@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect } from 'react';
 import { Layout, Menu, MenuProps } from 'antd';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, matchRoutes } from 'react-router-dom';
 import { ContainerOutlined, HomeOutlined, LogoutOutlined, OrderedListOutlined, ProductOutlined, ProjectOutlined, SolutionOutlined, UserOutlined } from '@ant-design/icons';
 import LogoUrl from '../assets/logo-grayscale-white.svg';
 import useAuthStore from '../store/authStore';
@@ -121,11 +121,18 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   }
 
   useEffect(() => {
-    const path = location.pathname
-    const route = Object.values(APP_ROUTES).find((route) => path.startsWith(route.ROUTE))
-    if (route) {
-      setCurrentKey(route.KEY)
-    } else {
+    const routes = Object.values(APP_ROUTES).map((route) => {
+      return {
+        ...route,
+        path: route.ROUTE,
+      }
+    });
+
+    const matches = matchRoutes(routes, location.pathname);
+    if (matches) {
+      setCurrentKey(matches[0].route.KEY)
+    }
+    else {
       setCurrentKey('')
     }
   }, [location.pathname])
@@ -140,7 +147,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
       <Content className="content">
         {children}
       </Content>
-      <Footer className="footer">MyApp ©2025 Created by YourName</Footer>
+      <Footer className="footer">Typescript Lab ©2025 Created by Sao Dao</Footer>
     </Layout>
   );
 };

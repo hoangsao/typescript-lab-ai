@@ -6,6 +6,7 @@ import { getAuthUser } from '../apis/userApi';
 import { APP_ROUTES } from '../constants/constant';
 import App from '../App';
 import Login from '../pages/Login';
+import Profile from '../pages/Profile';
 import useAuthStore from '../store/authStore';
 import useUserStore from '../store/userStore';
 import ProtectedRoutes from './ProtectedRoutes';
@@ -47,6 +48,7 @@ const Root = () => {
       <Routes>
         <Route element={<ProtectedRoutes />}>
           <Route path={APP_ROUTES.HOME.ROUTE} element={<App />} />
+          <Route path={APP_ROUTES.PROFILE.ROUTE} element={<Profile />} />
           {/* Add other protected routes here */}
           <Route path="*" element={<NotFound />} />
         </Route>

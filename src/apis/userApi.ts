@@ -89,3 +89,14 @@ export const getAuthUser = async (): Promise<ApiResponse<User>> => {
   }
   return handleResponse<User>(response);
 };
+
+export const updateProfile = async (id: number, profileData: Partial<User>): Promise<ApiResponse<User>> => {
+  const response = await fetch(`${serverUrl}/users/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(profileData),
+    credentials: 'include',
+  });
+
+  return handleResponse<User>(response);
+};
