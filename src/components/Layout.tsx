@@ -130,7 +130,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
 
     const matches = matchRoutes(routes, location.pathname);
     if (matches) {
-      setCurrentKey(matches[0].route.KEY)
+      setCurrentKey(matches[0].route.MENU_KEY)
     }
     else {
       setCurrentKey('')
