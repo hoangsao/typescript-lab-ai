@@ -7,6 +7,9 @@ import { APP_ROUTES } from '../constants/constant';
 import App from '../App';
 import Login from '../pages/Login';
 import Profile from '../pages/Profile';
+import Products from '../pages/Product';
+import ProductDetail from '../pages/Product/ProductDetail';
+import ProductEdit from '../pages/Product/ProductEdit';
 import useAuthStore from '../store/authStore';
 import useUserStore from '../store/userStore';
 import ProtectedRoutes from './ProtectedRoutes';
@@ -20,12 +23,12 @@ const Root = () => {
   useEffect(() => {
     const verifyAuth = async () => {
       try {
-        await checkAuth(); // Call the checkAuth function from authApi
-        const response = await getAuthUserApi(); // Updated to use getAuthUserApi
-        setUser(response.data); // Set the user data in the store
-        setAuth(true); // Set the authenticated user in the store
+        await checkAuth();
+        const response = await getAuthUserApi();
+        setUser(response.data);
+        setAuth(true);
       } catch {
-        setAuth(false); // Clear authentication if checkAuth fails
+        setAuth(false);
       }
     };
 
@@ -49,6 +52,13 @@ const Root = () => {
         <Route element={<ProtectedRoutes />}>
           <Route path={APP_ROUTES.HOME.ROUTE} element={<App />} />
           <Route path={APP_ROUTES.PROFILE.ROUTE} element={<Profile />} />
+          
+          {/* Product Routes */}
+          <Route path={APP_ROUTES.PRODUCT.ROUTE} element={<Products />} />
+          <Route path={APP_ROUTES.PRODUCT_DETAIL.ROUTE} element={<ProductDetail />} />
+          <Route path="/product/:id/edit" element={<ProductEdit />} />
+          <Route path="/product/new" element={<ProductEdit />} />
+          
           {/* Add other protected routes here */}
           <Route path="*" element={<NotFound />} />
         </Route>

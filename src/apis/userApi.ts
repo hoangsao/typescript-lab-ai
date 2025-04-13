@@ -1,29 +1,8 @@
 import { User } from '../models/user';
 import { ApiResponse, PaginatedResponse } from '../models/apiResponse';
+import { handlePaginatedResponse, handleResponse } from './helpers';
 
 const serverUrl = '/api'; // Updated to use proxy instead of direct server URL
-
-const handleResponse = async <T> (response: Response): Promise<ApiResponse<T>> => {
-  if (!response.ok) {
-    return {
-      success: false,
-      message: response.statusText || 'Request failed',
-      data: null,
-      error: {
-        code: response.status.toString(),
-        details: await response.text(),
-      },
-    };
-  }
-
-  const data = await response.json();
-  return {
-    success: true,
-    message: 'Request successful',
-    data,
-    error: null,
-  };
-};
 
 export const getUsersApi = async (
   currentPage: number,
@@ -37,7 +16,7 @@ export const getUsersApi = async (
     }
   );
 
-  return handleResponse<PaginatedResponse<User>>(response);
+  return handlePaginatedResponse<User>(response, currentPage, pageSize);
 };
 
 export const getUserByIdApi = async (id: number): Promise<ApiResponse<User>> => {
